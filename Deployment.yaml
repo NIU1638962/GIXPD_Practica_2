@@ -4,8 +4,14 @@ metadata:
   name: model-server
   namespace: default
 spec:
+  selector:
+    matchLabels:
+      environment: "dev"
   replicas: 3
   template:
+    metadata:
+      labels:
+        environment: "dev"
     spec:
       containers:
       - name: model-server
