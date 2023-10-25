@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-server
+  namespace: default
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+      - name: model-server
+        image: model-server:default
+        env:
+          - name: MODEL_PATH
+            valueFrom:
+              configMapKeyRef:
+                name: model-path
+                key: MODEL_PATH
+        volumeMounts:
+          - mountPath: /model
+            name: model-mount
+        resources:
+          requests:
+            memory: 64Mi
+            cpu: 200m
+          limits:
+            memory: 100Mi
+            cpu: 500m
+        ports:
+          - containerPort: 5000
+      volumes:
+        - name: model-mount
+          hostPath:
+            path: /tmp
+            type: Directory
+
