@@ -18,7 +18,7 @@ spec:
                   key: MODEL_PATH
           volumeMounts:
             - mountPath: /model
-              name: mount
+              name: model-mount
           resources:
             requests:
               memory: 64Mi
