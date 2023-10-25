@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: model-train
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+      - name: model-train
+        image: model-train:default
+        command: ["docker", "run", "--volume", "/tmp:/model", "--env", "MODEL_PATH=/model/model_1.npy", "model-train:default"]
+      restartPolicy: OnFailure
