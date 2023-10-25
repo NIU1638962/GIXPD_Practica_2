@@ -5,30 +5,28 @@ metadata:
   name: model-train
   namespace: default
 spec:
-  template: null
-  spec:
-    containers:
-      - name: model-train
-        image: model-train:default
-        env:
-          - name: MODEL_PATH
-            valueFrom:
-              configMapKeyRef:
-                name: model-path
-                key: MODEL_PATH
-        volumeMounts:
-          - mountPath: /model
-            name: mount
-        resources:
-          requests:
-            memory: 64Mi
-            cpu: 250m
-          limits:
-            memory: 128Mi
-            cpu: 500m
-        volumes:
-          - name: model-mount
-            hostPath:
-              path: /tmp
-              type: Directory
-        restartPolicy: OnFailure
+  containers:
+    - name: model-train
+      image: model-train:default
+      env:
+        - name: MODEL_PATH
+          valueFrom:
+            configMapKeyRef:
+              name: model-path
+              key: MODEL_PATH
+      volumeMounts:
+        - mountPath: /model
+          name: mount
+      resources:
+        requests:
+          memory: 64Mi
+          cpu: 250m
+        limits:
+          memory: 128Mi
+          cpu: 500m
+      volumes:
+        - name: model-mount
+          hostPath:
+            path: /tmp
+            type: Directory
+      restartPolicy: OnFailure
