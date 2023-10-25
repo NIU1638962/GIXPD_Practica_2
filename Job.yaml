@@ -9,6 +9,12 @@ spec:
       containers:
       - name: model-train
         image: model-train:default
+        env:
+        - name: MODEL_PATH
+          valueFrom:
+           configMapKeyRef:
+            name: model-path
+            key: MODEL_PATH
       	volumeMounts:
       	- mountPath: /model
       	  name: mount
