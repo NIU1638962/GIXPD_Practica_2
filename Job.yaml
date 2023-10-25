@@ -9,5 +9,13 @@ spec:
       containers:
       - name: model-train
         image: model-train:default
-        command: ["docker", "run", "--volume", "/tmp:/model", "--env", "MODEL_PATH=/model/model_1.npy", "model-train:default"]
+      	volumeMounts:
+      	- mountPath: /model
+      	  name: mount
+      volumes:
+      	- name: model-mount
+      	  hostPath: 
+      	   path: /tmp
+      	   type: Directory
       restartPolicy: OnFailure
+     
