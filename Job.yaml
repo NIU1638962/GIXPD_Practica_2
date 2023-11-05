@@ -32,3 +32,4 @@ spec:
             path: /tmp
             type: Directory
       restartPolicy: OnFailure
+
