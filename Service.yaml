@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Service
+metadata:
+  name: model-service
+  namespace: default
+spec:
+  selector:
+    app.kubernetes.io/name: proxy
+  ports:
+  - name: service-port
+    protocol: TCP
+    port: 5000
+    targetPort: http-deployment-server
