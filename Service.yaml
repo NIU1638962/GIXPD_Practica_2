@@ -8,6 +8,8 @@ spec:
     app.kubernetes.io/name: proxy
   ports:
   - name: service-port
+    appProtocol: http
     protocol: TCP
     port: 5000
     targetPort: http-deployment
+  type: ClusterIP
