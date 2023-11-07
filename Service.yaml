@@ -5,9 +5,9 @@ metadata:
   namespace: default
 spec:
   selector:
-    app.kubernetes.io/name: proxy
+    enviroment: "dev"
   ports:
-  - name: service-port
+  - name: http-service
     appProtocol: http
     protocol: TCP
     port: 5000
