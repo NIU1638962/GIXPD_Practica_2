@@ -10,6 +10,7 @@ spec:
       containers:
         - name: model-train
           image: model-train:default
+          imagePullPolicy: IfNotPresent
           env:
             - name: MODEL_PATH
               valueFrom:

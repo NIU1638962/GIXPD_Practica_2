@@ -16,6 +16,7 @@ spec:
       containers:
       - name: model-server
         image: model-server:default
+        imagePullPolicy: IfNotPresent
         env:
           - name: MODEL_PATH
             valueFrom:
@@ -34,7 +35,7 @@ spec:
             cpu: 500m
         ports:
           - containerPort: 5000
-            name: http-deployment-server
+            name: http-deployment
       volumes:
         - name: model-mount
           hostPath:
