@@ -11,5 +11,5 @@ spec:
     appProtocol: http
     protocol: TCP
     port: 5000
-    targetPort: http-deployment
+    targetPort: 5000
   type: ClusterIP
